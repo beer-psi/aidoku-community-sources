@@ -1,0 +1,33 @@
+[
+    {
+        "type": "group",
+        "title": "Help",
+        "items": [
+            {
+                "type": "switch",
+                "title": "Show help",
+                "key": "showHelp",
+                "default": true
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "title": "History",
+        "items": [
+            {
+                "type": "switch",
+                "title": "Save found series",
+                "key": "saveSeries",
+                "default": true
+            },
+            {
+                "type": "button",
+                "title": "Delete history",
+                "action": "deleteHistory",
+                "destructive": true
+            }
+        ],
+        "footer": "History will be deleted after source restart."
+    }
+]
