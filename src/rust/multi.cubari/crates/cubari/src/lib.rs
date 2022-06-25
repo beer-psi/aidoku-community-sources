@@ -193,8 +193,7 @@ fn get_chapter_list(id: String) -> Result<Vec<Chapter>> {
 
 #[no_mangle]
 #[export_name = "get_page_list"]
-#[allow(clippy::missing_safety_doc)]
-pub unsafe extern "C" fn __wasm_get_page_list(chapter_rid: i32) -> i32 {
+pub extern "C" fn __wasm_get_page_list(chapter_rid: i32) -> i32 {
 	let obj = ObjectRef(ValueRef::new(chapter_rid));
 	let manga_id = match obj.get("mangaId").as_string() {
 		Ok(id) => id.read(),
