@@ -1,5 +1,4 @@
 #![no_std]
-
 extern crate alloc;
 mod database;
 mod helper;
@@ -14,6 +13,7 @@ use aidoku::{
 	MangaViewer, Page,
 };
 use alloc::vec;
+use float_ord::FloatOrd;
 use helper::*;
 
 static mut CACHED_SLUG: Option<String> = None;
@@ -151,43 +151,41 @@ fn get_chapter_list(id: String) -> Result<Vec<Chapter>> {
 		cache_api_request(&id)?;
 		let json = unsafe { CACHED_JSON.clone().unwrap() };
 
-		let scanlator = json
-			.get("groups")
-			.as_object()?
-			.values()
-			.get(0)
-			.as_string()?
-			.read();
+		let scanlators_map = json.get("groups").as_object()?;
 		let chapters_object = json.get("chapters").as_object()?;
-		let mut chapters = Vec::with_capacity(chapters_object.keys().len());
+		let mut chapters = Vec::new();
 
 		for chapter in chapters_object.keys() {
 			let chapter = chapter.as_string()?.read();
 			let chapter_object = chapters_object.get(&chapter).as_object()?;
-			let date_updated = match chapter_object.get("release_date").as_object() {
-				Ok(obj) => obj
-					.values()
-					.get(0)
-					.as_float()
-					.unwrap_or(-1.0),
-				Err(_) => -1.0,
-			};
-			chapters.push(Chapter {
-				url: format!("https://cubari.moe/read/{}/{}/1", id, chapter),
-				chapter: chapter.parse().unwrap_or(-1.0),
-				id: chapter,
-				title: chapter_object.get("title").as_string()?.read(),
-				volume: chapter_object
-					.get("volume")
-					.as_string()?
-					.read()
-					.parse()
-					.unwrap_or(-1.0),
-				date_updated,
-				scanlator: scanlator.clone(),
-				lang: String::new(),
-			})
+			let groups_object = chapter_object.get("groups").as_object()?;
+			for group in groups_object.keys() {
+				let group = group.as_string()?.read();
+				let scanlator = scanlators_map.get(&group).as_string()?.read();
+				let date_updated = match chapter_object.get("release_date").as_object() {
+					Ok(obj) => obj.get(&group).as_float().unwrap_or(-1.0),
+					Err(_) => -1.0,
+				};
+				let chapter_id = format!("{chapter},{group}");
+				chapters.push(Chapter {
+					id: chapter_id,
+					url: format!("https://cubari.moe/read/{}/{}/1", id, chapter),
+					title: chapter_object.get("title").as_string()?.read(),
+					volume: chapter_object
+						.get("volume")
+						.as_string()?
+						.read()
+						.parse()
+						.unwrap_or(-1.0),
+					chapter: chapter.parse().unwrap_or(-1.0),
+					date_updated,
+					scanlator,
+					lang: String::new(),
+				})
+			}
 		}
+		chapters.sort_unstable_by_key(|item| (FloatOrd(item.volume), FloatOrd(item.chapter)));
+		chapters.reverse();
 		chapters
 	};
 	Ok(chapters)
@@ -266,13 +264,20 @@ This source locally tracks and saves any series found, which can be disabled in 
 			text: String::new(),
 		}])
 	} else {
+		let mut split = id.splitn(2, ',');
+		let id = split.next().unwrap_or_default();
+		let group = split.next().unwrap_or_default();
+
 		cache_api_request(&manga_id)?;
 		let json = unsafe { CACHED_JSON.clone().unwrap() };
 		let chapters_object = json.get("chapters").as_object()?;
-		let chapter_object = chapters_object.get(&id).as_object()?;
-		let group = chapter_object.get("groups").as_object()?;
-		let group_values = group.values();
-		let pages = group_values.get(0);
+
+		let pages = chapters_object
+			.get(id)
+			.as_object()?
+			.get("groups")
+			.as_object()?
+			.get(group);
 		match pages.kind() {
 			Kind::Array => {
 				let pages = pages.as_array()?;
@@ -312,32 +317,27 @@ fn handle_url(url: String) -> Result<DeepLink> {
 		if split.len() > 2 {
 			cache_api_request(&slug)?;
 			let json = unsafe { CACHED_JSON.clone().unwrap() };
-
-			let scanlator = json
-				.get("groups")
-				.as_object()?
-				.values()
-				.get(0)
-				.as_string()?
-				.read();
+			let scanlators_map = json.get("groups").as_object()?;
 			let chapters_object = json.get("chapters").as_object()?;
 
 			let chapter_object = chapters_object.get(split[2]).as_object()?;
+			let chapter_groups = chapter_object.get("groups").as_object()?;
+			let scanlator_ids = chapter_groups.keys();
+			let scanlator_id = scanlator_ids.get(0).as_string()?.read();
+
 			let date_updated = match chapter_object.get("release_date").as_object() {
 				Ok(obj) => obj
-					.values()
-					.get(0)
-					.as_string()?
-					.read()
-					.parse::<f64>()
+					.get(&scanlator_id)
+					.as_float()
 					.unwrap_or(-1.0),
 				Err(_) => -1.0,
 			};
+			let scanlator = scanlators_map.get(&scanlator_id).as_string()?.read();
 			Some(Chapter {
+				id: format!("{},{}", split[2], scanlator_id),
 				url,
-				chapter: split[2].parse().unwrap_or(-1.0),
-				id: String::from(split[2]),
 				title: chapter_object.get("title").as_string()?.read(),
+				chapter: split[2].parse().unwrap_or(-1.0),
 				volume: chapter_object
 					.get("volume")
 					.as_string()?

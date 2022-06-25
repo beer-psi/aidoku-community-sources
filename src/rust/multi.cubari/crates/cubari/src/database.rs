@@ -1,6 +1,6 @@
 use aidoku::{
 	error::Result,
-	prelude::*,
+	prelude::format,
 	std::{defaults::*, ArrayRef, ObjectRef, String, StringRef, Vec},
 	Manga,
 };

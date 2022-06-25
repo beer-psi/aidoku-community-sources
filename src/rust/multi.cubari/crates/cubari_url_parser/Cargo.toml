@@ -1,0 +1,10 @@
+[package]
+name = "cubari_url_parser"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aidoku = { git = "https://github.com/Aidoku/aidoku-rs" }
+base64 = { version = "0.13.0", default-features = false }

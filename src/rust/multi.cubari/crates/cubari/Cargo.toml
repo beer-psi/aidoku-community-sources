@@ -1,0 +1,12 @@
+[package]
+name = "cubari"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+aidoku = { git = "https://github.com/Aidoku/aidoku-rs" }
+float-ord = "0.3.2"
+cubari_url_parser = { path = "../cubari_url_parser" }
