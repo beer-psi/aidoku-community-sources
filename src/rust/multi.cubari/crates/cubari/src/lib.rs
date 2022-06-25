@@ -271,12 +271,9 @@ This source locally tracks and saves any series found, which can be disabled in 
 		let json = unsafe { CACHED_JSON.clone().unwrap() };
 		let chapters_object = json.get("chapters").as_object()?;
 
-		let pages = chapters_object
-			.get(id)
-			.as_object()?
-			.get("groups")
-			.as_object()?
-			.get(group);
+		let chapter_object = chapters_object.get(id).as_object()?;
+		let groups_object = chapter_object.get("groups").as_object()?;
+		let pages = groups_object.get(group);
 		match pages.kind() {
 			Kind::Array => {
 				let pages = pages.as_array()?;
