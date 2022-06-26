@@ -322,10 +322,7 @@ fn handle_url(url: String) -> Result<DeepLink> {
 			let scanlator_id = scanlator_ids.get(0).as_string()?.read();
 
 			let date_updated = match chapter_object.get("release_date").as_object() {
-				Ok(obj) => obj
-					.get(&scanlator_id)
-					.as_float()
-					.unwrap_or(-1.0),
+				Ok(obj) => obj.get(&scanlator_id).as_float().unwrap_or(-1.0),
 				Err(_) => -1.0,
 			};
 			let scanlator = scanlators_map.get(&scanlator_id).as_string()?.read();
