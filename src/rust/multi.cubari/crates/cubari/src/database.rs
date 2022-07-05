@@ -35,7 +35,11 @@ pub fn add_or_update_manga(manga: &Manga) -> Result<()> {
 		}
 
 		// Update manga in index
-		let mut obj = ObjectRef::new();
+		let mut obj = if let Ok(object) = defaults_get(&format!("history.{key}")).as_object() {
+			object
+		} else {
+			ObjectRef::new()
+		};
 		obj.set("cover", StringRef::from(&manga.cover).0);
 		obj.set("title", StringRef::from(&manga.title).0);
 		defaults_set(&format!("history.{key}"), obj.0);

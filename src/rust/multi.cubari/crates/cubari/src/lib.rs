@@ -1,13 +1,15 @@
 #![no_std]
+#![feature(let_chains)]
 extern crate alloc;
 mod database;
 mod helper;
+mod remotestorage;
 use aidoku::{
 	error::{AidokuError, AidokuErrorKind, Result},
 	prelude::*,
 	std::{
 		net::{HttpMethod, Request},
-		ArrayRef, Kind, ObjectRef, String, ValueRef, Vec,
+		ArrayRef, Kind, ObjectRef, String, ValueRef, Vec, defaults::*, StringRef
 	},
 	Chapter, DeepLink, Filter, FilterType, Manga, MangaContentRating, MangaPageResult, MangaStatus,
 	MangaViewer, Page,
@@ -351,8 +353,39 @@ fn handle_url(url: String) -> Result<DeepLink> {
 }
 
 #[handle_notification]
-fn handle_notification(notif: String) {
-	if notif == "deleteHistory" {
-		database::delete_all_manga().ok();
-	}
+fn handle_notification(notif: String) -> Result<()> {
+	match notif.as_str() {
+		"deleteHistory" => {
+			database::delete_all_manga().ok();
+		}
+		"rsAddress" => {
+			if let Ok(address) = defaults_get("rsAddress").as_string() {
+				let address = address.read();
+				if !address.is_empty() && address.contains('@') {
+					let provider = address.split('@').last().unwrap_or_default();
+					let webfinger = format!("https://{provider}/.well-known/webfinger?resource=acct:{address}");
+					let json = Request::new(&webfinger, HttpMethod::Get).json().as_object()?;
+					let links = json.get("links").as_array()?;
+					let props = links.get(0).as_object()?;
+					let properties = props.get("properties").as_object()?;
+					let oauth_url = properties.get("http://tools.ietf.org/html/rfc6749#section-4.2").as_string()?.read();
+					defaults_set(
+						"rsOauthUrl",
+						StringRef::from(
+							format!("{oauth_url}?redirect_uri=aidoku%3A%2F%2Fcubari-auth&scope=cubari%3Arw&client_id=aidoku&response_type=token")
+						).0,
+					);
+				}
+			}
+		}
+		"rsAuthComplete" => {
+			if let Ok(callback) = defaults_get("rsToken").as_string() {
+				let callback = callback.read();
+				let token = callback.split('=').last().unwrap_or_default();
+				defaults_set("rsToken", StringRef::from(token).0);
+			}
+		}
+		_ => {},
+	};
+	Ok(())
 }
