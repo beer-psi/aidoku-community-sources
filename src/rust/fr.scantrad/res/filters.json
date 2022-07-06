@@ -1,0 +1,290 @@
+[
+	{
+		"type": "title"
+	},
+	{
+		"type": "group",
+		"name": "Démographique",
+		"filters": [
+			{
+				"type": "check",
+				"name": "Seinen",
+				"id": "seinen",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Shojo",
+				"id": "shojo",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Shonen",
+				"id": "shonen",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Josei",
+				"id": "josei",
+				"canExclude": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"name": "Type",
+		"filters": [
+			{
+				"type": "check",
+				"name": "Manga",
+				"id": "manga",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Manwha",
+				"id": "manwha",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Manhua",
+				"id": "manhua",
+				"canExclude": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"name": "Genre",
+		"filters": [
+			{
+				"type": "genre",
+				"name": "Action",
+				"id": "action",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Adulte",
+				"id": "adulte",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Arts Martiaux",
+				"id": "arts martiaux",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Aventure",
+				"id": "aventure",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Comédie",
+				"id": "comédie",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Drame",
+				"id": "drame",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Ecchi",
+				"id": "ecchi",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Fantaisie",
+				"id": "fantaisie",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Harem",
+				"id": "harem",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Historique",
+				"id": "historique",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Horreur",
+				"id": "horreur",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Isekai",
+				"id": "isekai",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mature",
+				"id": "mature",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mecha",
+				"id": "mecha",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mystère",
+				"id": "mystère",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Pervers",
+				"id": "pervers",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Psychologique",
+				"id": "psychologique",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Romance",
+				"id": "romance",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Science-fiction",
+				"id": "science-fiction",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Shojo Ai",
+				"id": "shojo ai",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Shonen Ai",
+				"id": "shonen ai",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Sports",
+				"id": "sports",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Surnaturel",
+				"id": "surnaturel",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Tragédie",
+				"id": "tragédie",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Tranche de vie",
+				"id": "tranche de vie",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Gender bender",
+				"id": "gender bender",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Vie scolaire",
+				"id": "vie scolaire",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Webcomic",
+				"id": "webcomic",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Yaoi",
+				"id": "yaoi",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Yuri",
+				"id": "yuri",
+				"canExclude": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"name": "Statut",
+		"filters": [
+			{
+				"type": "check",
+				"name": "En cours",
+				"id": "1",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Terminé",
+				"id": "2",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "En pause ou Arrêté",
+				"id": "3",
+				"canExclude": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"name": "Autres",
+		"filters": [
+			{
+				"type": "check",
+				"name": "Récemment mis à jour",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Nouveaux",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Scantrad France",
+				"canExclude": true
+			}
+		]
+	}
+]
