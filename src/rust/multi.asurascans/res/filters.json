@@ -1,0 +1,384 @@
+[
+	{
+		"type": "title"
+	},
+	{
+		"type": "group",
+		"name": "Genre",
+		"filters": [
+			{
+				"type": "genre",
+				"name": "Action",
+				"id": "1",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Adventure",
+				"id": "2",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Adaptation",
+				"id": "3",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Another chance",
+				"id": "4",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Comedy",
+				"id": "6",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Cultivation",
+				"id": "7",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Demon",
+				"id": "8",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Drama",
+				"id": "9",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Dungeons",
+				"id": "10",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Ecchi",
+				"id": "11",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Fantasy",
+				"id": "12",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Game",
+				"id": "13",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Genius",
+				"id": "14",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Hero",
+				"id": "15",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Harem",
+				"id": "16",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Isekai",
+				"id": "17",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Josei",
+				"id": "18",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Historical",
+				"id": "19",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Martial Arts",
+				"id": "20",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mecha",
+				"id": "21",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Monsters",
+				"id": "22",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Magic",
+				"id": "23",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Murim",
+				"id": "24",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mystery",
+				"id": "25",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Necromancer",
+				"id": "26",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Noble",
+				"id": "27",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Overpowered",
+				"id": "28",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Rebirth",
+				"id": "29",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Psycological",
+				"id": "30",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Post-Apocalypse",
+				"id": "31",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Reincarnation",
+				"id": "32",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Returner",
+				"id": "33",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Revenge",
+				"id": "34",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Romance",
+				"id": "35",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "School Life",
+				"id": "36",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Sci-Fi",
+				"id": "37",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Seinen",
+				"id": "38",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Shoujo",
+				"id": "39",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Shounen",
+				"id": "40",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Slice of Life",
+				"id": "41",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Sports",
+				"id": "42",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Super Hero",
+				"id": "43",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Supernatural",
+				"id": "44",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "System",
+				"id": "45",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Time Travel",
+				"id": "46",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Survival",
+				"id": "47",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Tower",
+				"id": "48",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Tragedy",
+				"id": "49",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Video Game",
+				"id": "50",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Villain",
+				"id": "51",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Virtual Game",
+				"id": "52",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Virtual Reality",
+				"id": "53",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Virtual World",
+				"id": "54",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Webtoon",
+				"id": "55",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Wuxia",
+				"id": "56",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Mature",
+				"id": "57",
+				"canExclude": true
+			},
+			{
+				"type": "genre",
+				"name": "Apocalypse",
+				"id": "61",
+				"canExclude": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"name": "Status",
+		"filters": [
+			{
+				"type": "check",
+				"name": "Ongoing",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Dropped",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Completed",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Hiatus",
+				"canExclude": true
+			},
+			{
+				"type": "check",
+				"name": "Season-end",
+				"canExclude": true
+			}
+		]
+	}
+]
