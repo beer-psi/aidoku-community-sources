@@ -76,7 +76,7 @@ jobs:
     -
       name: Building source list
       run: |
-        aidoku build ./**/*.aix
+        aidoku build -w --web-title "Aidoku community sources" ./**/*.aix
     -
       name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.2.5
